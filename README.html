@@ -1,0 +1,721 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>README.md</title>
+<meta http-equiv="Content-type" content="text/html;charset=UTF-8">
+
+<style>
+/* https://github.com/microsoft/vscode/blob/master/extensions/markdown-language-features/media/markdown.css */
+/*---------------------------------------------------------------------------------------------
+ *  Copyright (c) Microsoft Corporation. All rights reserved.
+ *  Licensed under the MIT License. See License.txt in the project root for license information.
+ *--------------------------------------------------------------------------------------------*/
+
+body {
+	font-family: var(--vscode-markdown-font-family, -apple-system, BlinkMacSystemFont, "Segoe WPC", "Segoe UI", "Ubuntu", "Droid Sans", sans-serif);
+	font-size: var(--vscode-markdown-font-size, 14px);
+	padding: 0 26px;
+	line-height: var(--vscode-markdown-line-height, 22px);
+	word-wrap: break-word;
+}
+
+#code-csp-warning {
+	position: fixed;
+	top: 0;
+	right: 0;
+	color: white;
+	margin: 16px;
+	text-align: center;
+	font-size: 12px;
+	font-family: sans-serif;
+	background-color:#444444;
+	cursor: pointer;
+	padding: 6px;
+	box-shadow: 1px 1px 1px rgba(0,0,0,.25);
+}
+
+#code-csp-warning:hover {
+	text-decoration: none;
+	background-color:#007acc;
+	box-shadow: 2px 2px 2px rgba(0,0,0,.25);
+}
+
+body.scrollBeyondLastLine {
+	margin-bottom: calc(100vh - 22px);
+}
+
+body.showEditorSelection .code-line {
+	position: relative;
+}
+
+body.showEditorSelection .code-active-line:before,
+body.showEditorSelection .code-line:hover:before {
+	content: "";
+	display: block;
+	position: absolute;
+	top: 0;
+	left: -12px;
+	height: 100%;
+}
+
+body.showEditorSelection li.code-active-line:before,
+body.showEditorSelection li.code-line:hover:before {
+	left: -30px;
+}
+
+.vscode-light.showEditorSelection .code-active-line:before {
+	border-left: 3px solid rgba(0, 0, 0, 0.15);
+}
+
+.vscode-light.showEditorSelection .code-line:hover:before {
+	border-left: 3px solid rgba(0, 0, 0, 0.40);
+}
+
+.vscode-light.showEditorSelection .code-line .code-line:hover:before {
+	border-left: none;
+}
+
+.vscode-dark.showEditorSelection .code-active-line:before {
+	border-left: 3px solid rgba(255, 255, 255, 0.4);
+}
+
+.vscode-dark.showEditorSelection .code-line:hover:before {
+	border-left: 3px solid rgba(255, 255, 255, 0.60);
+}
+
+.vscode-dark.showEditorSelection .code-line .code-line:hover:before {
+	border-left: none;
+}
+
+.vscode-high-contrast.showEditorSelection .code-active-line:before {
+	border-left: 3px solid rgba(255, 160, 0, 0.7);
+}
+
+.vscode-high-contrast.showEditorSelection .code-line:hover:before {
+	border-left: 3px solid rgba(255, 160, 0, 1);
+}
+
+.vscode-high-contrast.showEditorSelection .code-line .code-line:hover:before {
+	border-left: none;
+}
+
+img {
+	max-width: 100%;
+	max-height: 100%;
+}
+
+a {
+	text-decoration: none;
+}
+
+a:hover {
+	text-decoration: underline;
+}
+
+a:focus,
+input:focus,
+select:focus,
+textarea:focus {
+	outline: 1px solid -webkit-focus-ring-color;
+	outline-offset: -1px;
+}
+
+hr {
+	border: 0;
+	height: 2px;
+	border-bottom: 2px solid;
+}
+
+h1 {
+	padding-bottom: 0.3em;
+	line-height: 1.2;
+	border-bottom-width: 1px;
+	border-bottom-style: solid;
+}
+
+h1, h2, h3 {
+	font-weight: normal;
+}
+
+table {
+	border-collapse: collapse;
+}
+
+table > thead > tr > th {
+	text-align: left;
+	border-bottom: 1px solid;
+}
+
+table > thead > tr > th,
+table > thead > tr > td,
+table > tbody > tr > th,
+table > tbody > tr > td {
+	padding: 5px 10px;
+}
+
+table > tbody > tr + tr > td {
+	border-top: 1px solid;
+}
+
+blockquote {
+	margin: 0 7px 0 5px;
+	padding: 0 16px 0 10px;
+	border-left-width: 5px;
+	border-left-style: solid;
+}
+
+code {
+	font-family: Menlo, Monaco, Consolas, "Droid Sans Mono", "Courier New", monospace, "Droid Sans Fallback";
+	font-size: 1em;
+	line-height: 1.357em;
+}
+
+body.wordWrap pre {
+	white-space: pre-wrap;
+}
+
+pre:not(.hljs),
+pre.hljs code > div {
+	padding: 16px;
+	border-radius: 3px;
+	overflow: auto;
+}
+
+pre code {
+	color: var(--vscode-editor-foreground);
+	tab-size: 4;
+}
+
+/** Theming */
+
+.vscode-light pre {
+	background-color: rgba(220, 220, 220, 0.4);
+}
+
+.vscode-dark pre {
+	background-color: rgba(10, 10, 10, 0.4);
+}
+
+.vscode-high-contrast pre {
+	background-color: rgb(0, 0, 0);
+}
+
+.vscode-high-contrast h1 {
+	border-color: rgb(0, 0, 0);
+}
+
+.vscode-light table > thead > tr > th {
+	border-color: rgba(0, 0, 0, 0.69);
+}
+
+.vscode-dark table > thead > tr > th {
+	border-color: rgba(255, 255, 255, 0.69);
+}
+
+.vscode-light h1,
+.vscode-light hr,
+.vscode-light table > tbody > tr + tr > td {
+	border-color: rgba(0, 0, 0, 0.18);
+}
+
+.vscode-dark h1,
+.vscode-dark hr,
+.vscode-dark table > tbody > tr + tr > td {
+	border-color: rgba(255, 255, 255, 0.18);
+}
+
+</style>
+
+<style>
+/* Tomorrow Theme */
+/* http://jmblog.github.com/color-themes-for-google-code-highlightjs */
+/* Original theme - https://github.com/chriskempson/tomorrow-theme */
+
+/* Tomorrow Comment */
+.hljs-comment,
+.hljs-quote {
+	color: #8e908c;
+}
+
+/* Tomorrow Red */
+.hljs-variable,
+.hljs-template-variable,
+.hljs-tag,
+.hljs-name,
+.hljs-selector-id,
+.hljs-selector-class,
+.hljs-regexp,
+.hljs-deletion {
+	color: #c82829;
+}
+
+/* Tomorrow Orange */
+.hljs-number,
+.hljs-built_in,
+.hljs-builtin-name,
+.hljs-literal,
+.hljs-type,
+.hljs-params,
+.hljs-meta,
+.hljs-link {
+	color: #f5871f;
+}
+
+/* Tomorrow Yellow */
+.hljs-attribute {
+	color: #eab700;
+}
+
+/* Tomorrow Green */
+.hljs-string,
+.hljs-symbol,
+.hljs-bullet,
+.hljs-addition {
+	color: #718c00;
+}
+
+/* Tomorrow Blue */
+.hljs-title,
+.hljs-section {
+	color: #4271ae;
+}
+
+/* Tomorrow Purple */
+.hljs-keyword,
+.hljs-selector-tag {
+	color: #8959a8;
+}
+
+.hljs {
+	display: block;
+	overflow-x: auto;
+	color: #4d4d4c;
+	padding: 0.5em;
+}
+
+.hljs-emphasis {
+	font-style: italic;
+}
+
+.hljs-strong {
+	font-weight: bold;
+}
+</style>
+
+<style>
+/*
+ * Markdown PDF CSS
+ */
+
+ body {
+	font-family: -apple-system, BlinkMacSystemFont, "Segoe WPC", "Segoe UI", "Ubuntu", "Droid Sans", sans-serif, "Meiryo";
+	padding: 0 12px;
+}
+
+pre {
+	background-color: #f8f8f8;
+	border: 1px solid #cccccc;
+	border-radius: 3px;
+	overflow-x: auto;
+	white-space: pre-wrap;
+	overflow-wrap: break-word;
+}
+
+pre:not(.hljs) {
+	padding: 23px;
+	line-height: 19px;
+}
+
+blockquote {
+	background: rgba(127, 127, 127, 0.1);
+	border-color: rgba(0, 122, 204, 0.5);
+}
+
+.emoji {
+	height: 1.4em;
+}
+
+code {
+	font-size: 14px;
+	line-height: 19px;
+}
+
+/* for inline code */
+:not(pre):not(.hljs) > code {
+	color: #C9AE75; /* Change the old color so it seems less like an error */
+	font-size: inherit;
+}
+
+/* Page Break : use <div class="page"/> to insert page break
+-------------------------------------------------------- */
+.page {
+	page-break-after: always;
+}
+
+</style>
+
+<script src="https://unpkg.com/mermaid/dist/mermaid.min.js"></script>
+</head>
+<body>
+  <script>
+    mermaid.initialize({
+      startOnLoad: true,
+      theme: document.body.classList.contains('vscode-dark') || document.body.classList.contains('vscode-high-contrast')
+          ? 'dark'
+          : 'default'
+    });
+  </script>
+<h1 id="rts-archive">RTS archive</h1>
+<p>A brief guide to processing the RTS archive.</p>
+<h2 id="0-collect-the-video-and-audio-files">0. Collect the video and audio files</h2>
+<p><strong>Write scripts to collect video &amp; audio files.</strong></p>
+<p><strong>How RTS files are organized:</strong> The original video and audio files in the RTS archive are organized as follows:</p>
+<pre class="hljs"><code><div>ZB000000
+├── ZB000000_track1.mp4
+├── ZB000000_track2.mp4
+├── ZB000000_track3.mp4
+├── ...
+└── ZB000000_trackn.mp4
+</div></code></pre>
+<p>Video file ends with &quot;track1&quot;. Audio file is the largest file among &quot;track2&quot; - &quot;trackn&quot;.</p>
+<p><strong>Collect and rename files:</strong> You should write your own scripts to collect and rename the video and audio files. They should be organized as follows:</p>
+<pre class="hljs"><code><div>&lt;your_rts_root&gt;
+├── videos
+│    ├── ZB000000.mp4
+│    ├── ZB000001.mp4
+│    ├── ...
+│    └── ZB267218.mp4
+└── audios
+     ├── ZB000000.mp4
+     ├── ZB000001.mp4
+     ├── ...
+     └── ZB267218.mp4
+</div></code></pre>
+<h2 id="01-compress-the-videos-optional">0.1 Compress the videos (optional)</h2>
+<p><strong>This part will compress FPS and SIZE of videos.</strong></p>
+<p>Requirements:</p>
+<ul>
+<li>
+<p>Install <a href="https://ffmpeg.org/download.html">FFmpeg</a>.</p>
+</li>
+<li>
+<p>Install Python libs:</p>
+<pre class="hljs"><code><div>pip install ffmpeg-python
+pip install psutil
+</div></code></pre>
+</li>
+</ul>
+<p>Then run:</p>
+<pre class="hljs"><code><div>python ./00_compress_videos.py --input_root [raw_video_root] --output_root [compressed_video_root]
+</div></code></pre>
+<p>Please not that the directory structure should remain the same as in <a href="#0-collect-the-video-and-audio-files">0. Collect the video and audio files</a>:</p>
+<pre class="hljs"><code><div>&lt;your_rts_root&gt;
+├── videos
+│    ├── ZB000000.mp4
+│    ├── ZB000001.mp4
+│    ├── ...
+│    └── ZB267218.mp4
+└── audios
+     ├── ZB000000.mp4
+     ├── ZB000001.mp4
+     ├── ...
+     └── ZB267218.mp4
+</div></code></pre>
+<h2 id="1-segment-the-videos-into-short-clips">1. Segment the videos into short clips</h2>
+<p><strong>This part will segment origianl videos into shorter clips based on detected shots.</strong></p>
+<p>Requirements:</p>
+<pre class="hljs"><code><div>pip install moviepy
+pip install scenedetect[opencv] --upgrade
+</div></code></pre>
+<p>Set the <code>input_dir</code> and <code>output_dir</code> variables in <code>./01_segment_video.py</code>：</p>
+<pre class="hljs"><code><div>input_dir = <span class="hljs-string">"&lt;your_rts_root&gt;"</span>  <span class="hljs-comment"># Directory root in "0. Collect the video and audio files" or "0.1 Compress the videos".</span>
+output_dir = <span class="hljs-string">"&lt;your_clip_root&gt;"</span>
+</div></code></pre>
+<p>Then run：</p>
+<pre class="hljs"><code><div>python ./01_segment_videos.py
+</div></code></pre>
+<p>Segmented clips will be organized in output dir as follows:</p>
+<pre class="hljs"><code><div>&lt;your_clip_root&gt;
+├── videos
+│   ├── ZB000000
+│   │   ├── ZB000000_00.mp4
+│   │   ├── ZB000000_01.mp4
+│   │   ├── ...
+│   │   └── ZB000000_12.mp4
+│   ├── ZB000001
+│   │   ├── ZB000001_0.mp4
+│   │   ├── ZB000001_1.mp4
+│   │   ├── ...
+│   │   └── ZB000001_7.mp4
+│   └── ...
+└── audios
+    ├── ZB000000
+    │   ├── ZB000000_00.mp3
+    │   ├── ZB000000_01.mp3
+    │   ├── ...
+    │   └── ZB000000_12.mp3
+    ├── ZB000001
+    │   ├── ZB000001_0.mp3
+    │   ├── ZB000001_1.mp3
+    │   ├── ...
+    │   └── ZB000001_7.mp3
+    └── ...
+</div></code></pre>
+<h2 id="2-extract-emotions">2. Extract emotions</h2>
+<p><strong>This part exacts emotions from segmented clips using out-of-the-box model.</strong></p>
+<p>Requirements:</p>
+<ul>
+<li>
+<p><strong>Install PyTorch=1.10.0 torchvision=0.11.0 torchaudio=0.10.0</strong></p>
+</li>
+<li>
+<p>Install Python libs:</p>
+<pre class="hljs"><code><div><span class="hljs-built_in">cd</span> 02_emo_TVLT
+pip install -r requirements.txt
+</div></code></pre>
+</li>
+</ul>
+<p>Set the <code>input_dir</code> and <code>output_dir</code> variables in <code>./02_emo.py</code>：</p>
+<pre class="hljs"><code><div>input_dir = <span class="hljs-string">"&lt;your_clip_root&gt;"</span> <span class="hljs-comment"># Output dir from "1. Segment the videos into short clips"</span>
+output_dir = <span class="hljs-string">"&lt;your_emo_root&gt;"</span>
+</div></code></pre>
+<p>Then run:</p>
+<pre class="hljs"><code><div>python ./02_emo.py
+<span class="hljs-built_in">cd</span> ..
+</div></code></pre>
+<p>Output files are JSON files for each orginal video. Within each JSON file, is the extracted emotions for each clip segmented (For example, if  <code>ZB000001.mp4</code> is segmented into 7 clips, then 7 emotions of 7 clips will be all stored in <code>ZB000001.json</code>). Output JSONs are organized as follows:</p>
+<pre class="hljs"><code><div>&lt;your_emo_root&gt;
+├── ZB000000.json
+├── ZB000001.json
+├── ZB000002.json
+├── ...
+└── ZB279854.json
+</div></code></pre>
+<h2 id="3-generate-video-descriptions">3. Generate video descriptions</h2>
+<p><strong>This part use out-of-box-model to generate text discriptions for segmented video clips.</strong></p>
+<p>Requirements:</p>
+<pre class="hljs"><code><div><span class="hljs-built_in">cd</span> 03_cap_PDVC
+pip install -r requirement.txt
+
+<span class="hljs-built_in">cd</span> pdvc/ops
+sh make.sh
+<span class="hljs-built_in">cd</span> ../..
+</div></code></pre>
+<p>Set the <code>CLIP_FOLDER</code> and <code>OUTPUT_FOLDER</code> in <code>03_cap.sh</code>:</p>
+<pre class="hljs"><code><div>CLIP_FOLDER=&lt;your_clip_root&gt; <span class="hljs-comment"># Output dir from "1. Segment the videos into short clips"</span>
+OUTPUT_FOLDER=&lt;naive_caption_root&gt;
+</div></code></pre>
+<p>Then run:</p>
+<pre class="hljs"><code><div>sh 03_cap.sh
+<span class="hljs-built_in">cd</span> ..
+</div></code></pre>
+<p>This step will generate JSON files for each original video, with video descriptions for each clips segmented. Output JSONs are organized as follows:</p>
+<pre class="hljs"><code><div>&lt;naive_caption_root&gt;
+├── ZB000000.json
+├── ZB000001.json
+├── ZB000002.json
+├── ...
+└── ZB279854.json
+</div></code></pre>
+<h2 id="4-fuse-and-paraphrase-descriptions">4. Fuse and paraphrase descriptions</h2>
+<p><strong>This part generate two dataset of video clips and text description pairs,</strong></p>
+<ul>
+<li>
+<p><strong>one with emotion - emotional dataset (step 1 &amp; 2),</strong></p>
+<ul>
+<li><strong>Video descriptions in the emotional dataset are called <em>emotional descriptions</em>.</strong></li>
+</ul>
+</li>
+<li>
+<p><strong>one without - naive dataset (step 3).</strong></p>
+<ul>
+<li><strong>Video descriptions in the naive dataset are called <em>naive descriptions</em>. <a href="#3-generate-video-descriptions">Part 3. Generate video descriptions</a> already generates some naive descriptions.</strong></li>
+</ul>
+</li>
+</ul>
+<p>Requirements:</p>
+<pre class="hljs"><code><div>pip install git+https://github.com/PrithivirajDamodaran/Parrot_Paraphraser.git
+</div></code></pre>
+<p><strong>Step 1: generate hard-coded emotional descriptions.</strong></p>
+<p>Set the three variables in <code>04_fuse.py</code>:</p>
+<pre class="hljs"><code><div>input_dir = <span class="hljs-string">"&lt;naive_caption_root&gt;"</span> <span class="hljs-comment"># Output dir from "3. Generate video descriptions"</span>
+emo_dir = <span class="hljs-string">"&lt;your_emo_root&gt;"</span> <span class="hljs-comment"># Output dir from "2. Extract emotions"</span>
+output_dir = <span class="hljs-string">"&lt;emo_caption_root&gt;"</span>
+</div></code></pre>
+<p>Then run:</p>
+<pre class="hljs"><code><div>python ./04_fuse.py
+</div></code></pre>
+<p>Generated folder structure:</p>
+<pre class="hljs"><code><div>&lt;emo_caption_root&gt;
+├── ZB000000.json
+├── ZB000001.json
+├── ZB000002.json
+├── ...
+└── ZB279854.json
+</div></code></pre>
+<p><strong>Step 2: paraphrase hard-coded emotional descriptions.</strong></p>
+<p>This step will paraphrase outcome from <strong>Step 1</strong>, to enhance the hard-coded emotional descriptions.</p>
+<p>Set the two variables in <code>04_paraphrase_emo.py</code>:</p>
+<pre class="hljs"><code><div>input_dir = <span class="hljs-string">"&lt;emo_caption_root&gt;"</span> <span class="hljs-comment"># Output dir from Step 1</span>
+output_dir = <span class="hljs-string">"&lt;para_emo_caption_root&gt;"</span>
+</div></code></pre>
+<p>Then run:</p>
+<pre class="hljs"><code><div>python ./04_paraphrase_emo.py
+</div></code></pre>
+<pre class="hljs"><code><div>&lt;para_emo_caption_root&gt;
+├── ZB000000.json
+├── ZB000001.json
+├── ZB000002.json
+├── ...
+└── ZB279854.json
+</div></code></pre>
+<p><strong>Step 3: paraphrase naive descriptions.</strong></p>
+<p>This step is parallel to <strong>Step 1 &amp; 2</strong>, the aim is to paraphrase the outcome from <a href="#4-fuse-and-paraphrase-descriptions">Part 4. Generate video descriptions</a>.</p>
+<p>Set the three variables in <code>04_paraphrase.py</code>:</p>
+<pre class="hljs"><code><div>input_dir = <span class="hljs-string">"&lt;naive_caption_root&gt;"</span>  <span class="hljs-comment"># Output dir from "3. Generate video descriptions"</span>
+output_dir = <span class="hljs-string">"&lt;para_naive_caption_root&gt;"</span>
+</div></code></pre>
+<p>Then run:</p>
+<pre class="hljs"><code><div>python ./04_paraphrase.py
+</div></code></pre>
+<pre class="hljs"><code><div>&lt;para_naive_caption_root&gt;
+├── ZB000000.json
+├── ZB000001.json
+├── ZB000002.json
+├── ...
+└── ZB279854.json
+</div></code></pre>
+<h2 id="5-sample-and-format-the-descriptions">5. Sample and format the descriptions</h2>
+<p><strong>This part will format the text description and video clips pairs to the format of selected text-video retrival model's standard.</strong></p>
+<p>Set the following variables in <code>05_build_dataset.py</code>:</p>
+<pre class="hljs"><code><div>emo_dir = <span class="hljs-string">"&lt;your_emo_root&gt;"</span>  <span class="hljs-comment"># Output dir from "2. Extract emotions"</span>
+caption_dir = <span class="hljs-string">"&lt;naive_caption_root&gt;"</span> <span class="hljs-comment"># Output dir from "3. Generate video descriptions"</span>
+new_caption_dir = <span class="hljs-string">"&lt;para_naive_caption_root&gt;"</span> <span class="hljs-comment"># Output dir from "4. Fuse and paraphrase descriptions - step 3"</span>
+emo_caption_dir = <span class="hljs-string">"&lt;emo_caption_root&gt;"</span> <span class="hljs-comment"># Output dir from "4. Fuse and paraphrase descriptions - step 1"</span>
+new_emo_caption_dir = <span class="hljs-string">"&lt;para_emo_caption_root&gt;"</span> <span class="hljs-comment"># Output dir from "4. Fuse and paraphrase descriptions - step 2"</span>
+
+train_set_ratio = <span class="hljs-number">0.9</span>   <span class="hljs-comment"># Train / Val split ratio</span>
+output_dir = <span class="hljs-string">"&lt;your_annotation_root&gt;"</span>
+</div></code></pre>
+<p>Then run:</p>
+<pre class="hljs"><code><div>python ./05_build_dataset.py
+</div></code></pre>
+<p>This will filter and format descriptions and save them to files:</p>
+<pre class="hljs"><code><div>&lt;your_annotation_root&gt;
+├── dataset.csv <span class="hljs-comment"># list of all videos</span>
+├── train.csv   <span class="hljs-comment"># video list for training</span>
+├── naive_captions.json     <span class="hljs-comment"># naive descriptions</span>
+├── emotional_captions.json <span class="hljs-comment"># emotional descriptions</span>
+├── naive_test.csv      <span class="hljs-comment"># videos and naive descriptions for validation</span>
+└── emotional_test.csv  <span class="hljs-comment"># videos and emotional descriptions for validation</span>
+</div></code></pre>
+<h2 id="6-fine-tune-text-to-video-retrieval-models">6. Fine-tune text-to-video retrieval models</h2>
+<p><strong>This part fine tunes the pretrained model for text-to-video retrieval with prepared two datasets.</strong></p>
+<p>Requirements:</p>
+<ul>
+<li>
+<p><strong>Important:</strong> Starting from this part, we suggest creating a new Python environment. Then install <strong>pytorch=1.7.1 torchvision=0.8.2</strong> and do <strong>all the following parts</strong> in the new env to avoid potential issues.</p>
+</li>
+<li>
+<p>Install some Python libs:</p>
+<pre class="hljs"><code><div><span class="hljs-built_in">cd</span> 06_retrieval_ts2 
+pip install ftfy regex tqdm
+pip install opencv-python boto3 requests pandas scipy
+</div></code></pre>
+</li>
+</ul>
+<p>Set the following paths in <code>train_naive_model.sh</code> and <code>train_emotional_model.sh</code>:</p>
+<pre class="hljs"><code><div>CLIP_ROOT=&lt;your_clip_root&gt;  <span class="hljs-comment"># Ourput dir from "1. Segment the videos into short clips"</span>
+ANNOTATION_ROOT=&lt;your_annotation_root&gt; <span class="hljs-comment"># Output dir from "5. Sample and format the descriptions"</span>
+OUTPUT_ROOT=&lt;your_model_root&gt; 
+</div></code></pre>
+<p>You can also adjust the training parameters in both scripts.</p>
+<p>To fine-tune model on the naive dataset, run:</p>
+<pre class="hljs"><code><div>sh ./train_naive_model.sh
+<span class="hljs-built_in">cd</span> ..
+</div></code></pre>
+<p>To fine-tune model on the emotional dataset, run:</p>
+<pre class="hljs"><code><div>sh ./train_emotional_model.sh
+<span class="hljs-built_in">cd</span> ..
+</div></code></pre>
+<p>The fine-tuned models will be saved in <code>&lt;your_model_root&gt;/naive/</code> or <code>&lt;your_model_root&gt;/emotinal/</code> based on the dataset they used. You can find a log file in the both folders for evaluation results and the best models.</p>
+<h2 id="7-encode-videos-or-descriptions">7. Encode videos or descriptions</h2>
+<p><strong>This part will encode videos (from a folder) or descriptions (from a text file) to high-dimensional vectors via the selected model.</strong></p>
+<p>Set the six variables in <code>06_retrieval_ts2/07_get_emb.py</code> <code>line 343</code>:</p>
+<pre class="hljs"><code><div>input_type = <span class="hljs-string">"video"</span>                   <span class="hljs-comment"># "video" or "text"</span>
+text_file = <span class="hljs-string">"&lt;your_description_file&gt;"</span>  <span class="hljs-comment"># Only used if input_type == "text"</span>
+video_dir = <span class="hljs-string">"&lt;your_video_root&gt;"</span>        <span class="hljs-comment"># Only used if input_type == "video"</span>
+model_path = <span class="hljs-string">"&lt;your_model_file&gt;"</span>       <span class="hljs-comment"># E.g., &lt;your_model_root&gt;/naive/pytorch_model.bin.1</span>
+output_path = <span class="hljs-string">"&lt;your_output_npy_file&gt;"</span>  <span class="hljs-comment"># E.g., ./embedding.npy</span>
+video_order_file = <span class="hljs-string">"&lt;your_video_order_file&gt;"</span>  <span class="hljs-comment"># E.g., ./video_order.txt. Save the list of videos to file. Only used if input_type == "video"</span>
+</div></code></pre>
+<p>If you feel lost, here are detailed explanations for these variables:</p>
+<ul>
+<li>
+<p>If <code>input_type</code> is <code>video</code>, the model (<code>&lt;your_model_file&gt;</code>) will encode all videos in the folder (<code>&lt;your_video_root&gt;</code>) and save the obtained vectors into a <code>.npy</code> file (<code>&lt;your_output_npy_file&gt;</code>). The order of encoded videos is saved in <code>&lt;your_video_order_file&gt;</code>. Note that the order of videos (in <code>&lt;your_video_order_file&gt;</code>) matches the order of vectors (in <code>&lt;your_output_npy_file&gt;</code>) for further utilization.</p>
+</li>
+<li>
+<p>If <code>input_type</code> is <code>text</code>, the model (<code>&lt;your_model_file&gt;</code>) will encode all descriptions in the file (<code>&lt;your_description_file&gt;</code>) and save the obtained vectors into a <code>.npy</code> file (<code>&lt;your_output_npy_file&gt;</code>). The order of vectors (in <code>&lt;your_output_npy_file&gt;</code>) matches the order of descriptions (in <code>&lt;your_description_file&gt;</code>).</p>
+</li>
+</ul>
+<p>Then run:</p>
+<pre class="hljs"><code><div><span class="hljs-built_in">cd</span> 06_retrieval_ts2
+python ./07_get_emb.py
+<span class="hljs-built_in">cd</span> ..
+</div></code></pre>
+<h2 id="8-reduce-dimension">8. Reduce dimension</h2>
+<p><strong>This part will reduce high-dimensional vectors generated in the previous step to low-dimensional vectors and save them to a file (<code>&lt;your_point_file&gt;</code>). Then the file can be loaded as coordinates of points and visualized as you wish.</strong></p>
+<p>Requirements:</p>
+<pre class="hljs"><code><div>pip install umap-learn
+</div></code></pre>
+<p>Set the following variables and UMAP parameters in <code>08_prepare_viz.py</code>:</p>
+<pre class="hljs"><code><div>emb = np.load(<span class="hljs-string">"&lt;your_output_npy_file&gt;"</span>)  <span class="hljs-comment"># Generated .npy file in "7. Encode videos or descriptions"</span>
+point_file = <span class="hljs-string">"&lt;your_point_file&gt;"</span>         <span class="hljs-comment"># E.g., ./points.txt</span>
+n_components = <span class="hljs-number">2</span>    <span class="hljs-comment"># Target dimensionality. 2 for generating 2d points, 3 for generating 3d points...</span>
+
+<span class="hljs-comment"># See https://umap-learn.readthedocs.io/en/latest/ for more details.</span>
+mapper = umap.UMAP(n_neighbors=<span class="hljs-number">8</span>,
+                   min_dist=<span class="hljs-number">0.5</span>,
+                   n_components=n_components,
+                   metric=<span class="hljs-string">'euclidean'</span>)
+</div></code></pre>
+<p>Then run:</p>
+<pre class="hljs"><code><div>python ./08_prepare_viz.py
+</div></code></pre>
+<p>The low-dimentional vectors will be saved in <code>&lt;your_point_file&gt;</code>. Each vector is saved in a line. Components are separated by <code>,</code>.</p>
+<h2 id="9-a-viz-demo-optional">9. A viz demo (Optional)</h2>
+<p>We also provide a simple Unity scene to show how <code>&lt;your_point_file&gt;</code>, <code>&lt;your_description_file&gt;</code>, and <code>&lt;your_video_order_file&gt;</code> can be used. We test it on Unity 2021.3.15.</p>
+<p>To visualize the points in Unity project:</p>
+<ul>
+<li>
+<p>Copy <code>&lt;your_point_file&gt;</code>generated in the previous step to <code>Assets/Resources/Texts</code>.</p>
+</li>
+<li>
+<p>If you want to display videos, copy the <code>&lt;your_video_order_file&gt;</code> to <code>Assets/Resources/Texts</code>. And copy all related video files to <code>Assets/Resources/Videos</code>.</p>
+</li>
+<li>
+<p>If you want to display text descriptions, copy the <code>&lt;your_description_file&gt;</code> to <code>Assets/Resources/Texts</code>.</p>
+</li>
+</ul>
+<p>The Unity project structure:</p>
+<pre class="hljs"><code><div>Assets
+├── Resources
+│    ├── Texts
+│    │   ├── &lt;your_point_file&gt;
+│    │   ├── &lt;your_video_order_file&gt; 
+│    │   └── &lt;your_description_file&gt;
+│    └── Videos
+│        ├──  xxxxxx.mp4
+│        ├──  yyyyyy.mp4
+│        └──  ...
+└── ...
+</div></code></pre>
+<p>In the sample scene, use WASD to adjust viewport and move mouse to cubes to display more information.</p>
+<p>If you generate <code>&lt;your_point_file&gt;</code>, <code>&lt;your_description_file&gt;</code>, or <code>&lt;your_video_order_file&gt;</code> in Unix, You may need to replace the characters <code>&quot;\r\n&quot;</code> (in <code>Assets/Scripts/PointParser.cs</code> <code>line 29 - 31</code>) with <code>&quot;\n&quot;</code>.</p>
+<pre class="hljs"><code><div><span class="hljs-built_in">string</span>[] pointText = pointFile.<span class="hljs-built_in">text</span>.Split(<span class="hljs-string">"\r\n"</span>);
+<span class="hljs-built_in">string</span>[] videoPathsText = videoPathsFile.<span class="hljs-built_in">text</span>.Split(<span class="hljs-string">"\r\n"</span>);
+<span class="hljs-built_in">string</span>[] descriptionText = descriptionFile.<span class="hljs-built_in">text</span>.Split(<span class="hljs-string">"\r\n"</span>);
+</div></code></pre>
+
+</body>
+</html>
